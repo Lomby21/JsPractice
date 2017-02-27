@@ -1,33 +1,35 @@
-function isPrime(someNumber){
-//This function determines if the input number 'someNumber' is prime.
-    var primeFlag = true;
-     for (x = 2; (x < (someNumber / 2) + 1) && primeFlag; x++){
-       if (someNumber % x == 0){
-         primeFlag = false;
-       }
-     }
-     return primeFlag;
-}
-
-function listPrimes(someNumber){
-//This function returns an array of all prime numbers lower than the input 'someNumber'.
-    var primes = [];
-    for (x = 1; x < (someNumber / 2) + 1; x++){
-        if (isPrime(x)){
-           primes.push(x);
-        }
-     }
-     return primes;
-}          
-
-function findPrimeFactors(someNumber, possiblePrimeFactors){
-    var primeFactors = [];
-    for (x = 0; x < possiblePrimeFactors.length; x++){
-       if (someNumber % possiblePrimeFactors[x] == 0) {
-          primeFactors.push(possiblePrimeFactors[x]);
-       }
+function findHighestPrimeFactor(someNumber, primes){
+    var highestPossiblePrimeFactor = Math.floor(Math.sqrt(someNumber));
+    var primeFactorFound = false
+    if (primes.length === 0 || highestPossiblePrimeFactor > primes[primes.length - 1]){
+        checkForNewPrimes(highestPossiblePrimeFactor, primes);
     }
-    return primeFactors;
+    for (var x = primes.length - 1; (x >= 0) && !primeFactorFound; x--){
+        if (someNumber % primes[x] === 0){
+            primeFactorFound = true;
+            return primes[x];
+        }
+    }
+    if (!primeFactorFound){
+        return someNumber;
+    }
 }
 
-console.log(findPrimeFactors(600851475143, listPossiblePrimeFactors(600851475143)));
+function checkForNewPrimes(upperLimit, primes){
+    if (primes.length === 0){
+       primes.push(2);
+    }
+    for (var numberInTest = primes[primes.length - 1]; numberInTest <= upperLimit; numberInTest++){
+        var primeFlag = true;
+        for (var i = 0; (i < primes.length) && primeFlag; i++){
+            if (numberInTest % primes[i] === 0){
+                primeFlag = false;
+            }
+        }
+        if (primeFlag){
+            primes.push(numberInTest);
+        }
+    }
+}
+
+var primes = [];
