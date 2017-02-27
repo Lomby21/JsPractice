@@ -22,4 +22,4 @@ for (var x = 999; x > 0; x--){
         }
     }
 }
-console.log(highestFound);
+console.log(highestFound[0] + ' is the largest palindromic number found as the product of ' + highestFound[1] + ' and ' + highestFound[2]);
