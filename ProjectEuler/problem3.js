@@ -33,3 +33,4 @@ function checkForNewPrimes(upperLimit, primes){
 }
 
 var primes = [];
+findHighestPrimeFactor(600851475143, primes);
