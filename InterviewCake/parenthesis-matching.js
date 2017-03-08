@@ -27,7 +27,7 @@ function findParenthesisPartner (someString, point){
     default:
       throw "invalid selection, please select a point in the input string which is one of the following characters: ( ) [ ] { } ";
   }
-  if (openingParenthesis <> "") {
+  if (openingParenthesis != "") {
     for (var i = 0; ((i < someString.length) && !targetParenthesisFound); i++) {
       if (someString.charAt(i) === openingParenthesis){
         locationStore.push(i);
@@ -38,6 +38,7 @@ function findParenthesisPartner (someString, point){
         if (i === point){
           if (locationStore.length === 0) {
             throw "No match found for selected parenthesis.";
+            targetParenthesisFound = true;
           } else {
             targetParenthesisFound = true;
             return locationStore[locationStore.length - 1];
@@ -47,9 +48,13 @@ function findParenthesisPartner (someString, point){
             targetParenthesisFound = true;
             return i;
           } else {
-          locationStore.pop();
+            locationStore.pop();
+          }  
         }
       }
     }
+    if (!targetParenthesisFound) {
+      throw "No match found for selected parenthesis.";
+    }  
   }
 }
