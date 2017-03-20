@@ -6,7 +6,7 @@ function permutations(someString) {
     for (var i = 0; i < permutationSet.length; i++) {
       var splitPermutation = permutationSet[i].split("");
       for (var j = 0; j <= splitPermutation.length; j++) {
-        var newPermutation = splitPermutation;
+        var newPermutation = splitPermutation.slice();
         newPermutation.splice(j, 0, someString[0]);
         newPermutationSet.push(newPermutation.join(""));
       }
