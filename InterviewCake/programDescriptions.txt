@@ -1,0 +1,13 @@
+Apple stocks:
+  The aim of this test was to find the maximum profit or minimum loss over an input array of stock prices in the 
+  smallest program order possible.
+  
+Parenthesis matching:
+  This program is designed to take the input string position of a parenthesis and outputs the string position of the matching parenthesis.
+  
+Permutation palindrome:
+  The aim of this problem is to determine if any input string is palindromic.
+  
+Recursive permutations:
+  This program is designed to output all possible permutations of an input string using a recursive function. Needs improving such that
+  repeated letters do not cause repeated entries in the final output.
